@@ -1,2 +1,2 @@
-- Services include ShadowSocksR Plus+, AdGuard Home, ZeroTier, KMS Server
+- Services include ShadowSocksR Plus+, AdGuard Home, ZeroTier, KMS Server, Frpc
 - Support iperf3 auto-start at boot
