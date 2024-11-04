@@ -7,7 +7,9 @@
 # sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 
 # 2. Clear the login password
-sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+LOGIN_SETTINGS="package/lean/default-settings/files/zzz-default-settings"
+sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' "$LOGIN_SETTINGS"
+echo "Cleared login password in $LOGIN_SETTINGS"
 
 # 3. Modify the hostname
 # sed -i 's/OpenWrt/OpenWrt-Router/g' package/base-files/files/bin/config_generate
@@ -16,7 +18,7 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/f
 ADGUARD_PACKAGE="package/luci-app-adguardhome"
 if [ ! -d "$ADGUARD_PACKAGE" ]; then
   git clone --depth 1 https://github.com/rufengsuixing/luci-app-adguardhome.git "$ADGUARD_PACKAGE"
-  echo "AdGuardHome package cloned to $ADGUARD_PACKAGE"
+  echo "Cloned AdGuardHome package to $ADGUARD_PACKAGE"
 else
   echo "AdGuardHome package already exists in $ADGUARD_PACKAGE"
 fi
@@ -46,7 +48,7 @@ restart() {
 }
 EOF
   chmod +x "$IPERF_INIT_SCRIPT"
-  echo "iPerf3 init script created at $IPERF_INIT_SCRIPT"
+  echo "Created iPerf3 init script at $IPERF_INIT_SCRIPT"
 else
   echo "iPerf3 init script already exists at $IPERF_INIT_SCRIPT"
 fi
@@ -57,7 +59,16 @@ LUCI_ZEROTIER_CONTROLLER_PATH="feeds/luci/applications/luci-app-zerotier/luasrc/
 if [ -f "$LUCI_ZEROTIER_CONTROLLER_PATH" ]; then
   # Change the menu entry from "VPN" to "Services"
   sed -i 's/vpn/services/g' "$LUCI_ZEROTIER_CONTROLLER_PATH"
-  echo "The luci-app-zerotier menu has been moved to Services."
+  echo "Moved luci-app-zerotier menu to Services."
 else
   echo "Warning: $LUCI_ZEROTIER_CONTROLLER_PATH not found!"
 fi
+
+# 7. Replace luci-theme-argon with jerrykuku's version (18.06 branch)
+LUCITHEME_ARGON="feeds/luci/themes/luci-theme-argon"
+if [ -d "$LUCITHEME_ARGON" ]; then
+  rm -rf "$LUCITHEME_ARGON"
+  echo "Removed existing luci-theme-argon theme from $LUCITHEME_ARGON"
+fi
+git clone -b 18.06 --depth 1 https://github.com/jerrykuku/luci-theme-argon.git "$LUCITHEME_ARGON"
+echo "Replaced luci-theme-argon with jerrykuku's version in $LUCITHEME_ARGON"
