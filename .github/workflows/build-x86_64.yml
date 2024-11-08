@@ -19,7 +19,7 @@ on:
       UPLOAD_RELEASE:
         description: 'Whether to upload firmware to the GitHub release page'
         required: false
-        default: 'false'
+        default: 'true'
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -104,6 +104,9 @@ jobs:
           if [ -n "$REPO_COMMIT" ]; then
             git -C openwrt reset --hard $REPO_COMMIT
           fi
+          # Print the latest commit ID and log
+          echo "Latest commit ID and log:"
+          git -C openwrt log -1 --pretty=format:"%H %s"
 
       - name: Load custom feeds
         run: |
