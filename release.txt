@@ -1,2 +1,23 @@
-- Services include ShadowSocksR Plus+, AdGuard Home, ZeroTier, KMS Server, Frpc
-- Support iperf3 auto-start at boot
+## Overview
+
+- Kernel Update: Upgraded to 6.6.59 for enhanced system performance and stability.
+
+## Integrated Services
+
+- ShadowSocksR Plus+: Provides proxy services with support for various encryption protocols.
+- AdGuard Home: Integrated ad-blocking for a secure browsing experience.
+- ZeroTier: Virtual private networking for convenient remote connections.
+- KMS Server: LAN-based activation for Windows and Office products.
+- Frpc: Internal network tunneling with multi-protocol support.
+
+## Performance Optimization
+
+- iPerf3 Autostart: Network performance testing with automatic startup, ideal for monitoring bandwidth.
+
+## Theme and UI
+
+- Argon Theme: Designed with JerryKuKu’s Argon theme, offering a clean, modern interface with dark mode support.
+
+## Use Cases
+
+Designed for users needing advanced network management and security, such as home networks, corporate LANs, and remote work environments.
