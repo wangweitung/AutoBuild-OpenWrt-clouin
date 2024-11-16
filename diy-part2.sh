@@ -15,13 +15,13 @@ echo "Cleared login password in $LOGIN_SETTINGS"
 # sed -i 's/OpenWrt/OpenWrt-Router/g' package/base-files/files/bin/config_generate
 
 # 4. Install AdGuardHome package
-ADGUARD_PACKAGE="package/luci-app-adguardhome"
-if [ ! -d "$ADGUARD_PACKAGE" ]; then
-  git clone --depth 1 https://github.com/rufengsuixing/luci-app-adguardhome.git "$ADGUARD_PACKAGE"
-  echo "Cloned AdGuardHome package to $ADGUARD_PACKAGE"
-else
-  echo "AdGuardHome package already exists in $ADGUARD_PACKAGE"
-fi
+#ADGUARD_PACKAGE="package/luci-app-adguardhome"
+#if [ ! -d "$ADGUARD_PACKAGE" ]; then
+#  git clone --depth 1 https://github.com/rufengsuixing/luci-app-adguardhome.git "$ADGUARD_PACKAGE"
+#  echo "Cloned AdGuardHome package to $ADGUARD_PACKAGE"
+#else
+#  echo "AdGuardHome package already exists in $ADGUARD_PACKAGE"
+#fi
 
 # 5. Create iPerf3 startup script for OpenWrt
 IPERF_INIT_SCRIPT="package/base-files/files/etc/init.d/iperf3"
